@@ -35,10 +35,10 @@ public class ArrayStorage {
     }
 
     void delete(String uuid) {
-        boolean isSorted = false;
+        boolean isDeleted = false;
 
         for (int i = 0; i < storage.length; i++) {
-            if (isSorted == true) {
+            if (isDeleted) {
                 storage[i - 1] = storage[i];
             }
             if (storage[i] == null) {
@@ -46,7 +46,7 @@ public class ArrayStorage {
             }
             if (uuid.equals(storage[i].uuid)) {
                 storage[i] = null;
-                isSorted = true;
+                isDeleted = true;
             }
         }
     }
