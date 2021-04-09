@@ -5,16 +5,17 @@ public class ArrayStorage {
     Resume[] storage = new Resume[10000];
 
     void clear() {
-        for (int i = 0; i < size(); i++) {
-            if (storage[i] != null) {
-                storage[i] = null;
+        for (int i = 0; i < storage.length; i++) {
+            if (storage[i] == null) {
+                break;
             }
+            storage[i] = null;
         }
     }
 
     void save(Resume r) {
-        for (int i = 0; i < storage.length ; i++) {
-            if (storage[i] == null){
+        for (int i = 0; i < storage.length; i++) {
+            if (storage[i] == null) {
                 storage[i] = r;
                 return;
             }
@@ -23,10 +24,10 @@ public class ArrayStorage {
 
     Resume get(String uuid) {
         for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null){
+            if (storage[i] == null) {
                 break;
             }
-            if (uuid.equals(storage[i].uuid)){
+            if (uuid.equals(storage[i].uuid)) {
                 return storage[i];
             }
         }
@@ -34,12 +35,18 @@ public class ArrayStorage {
     }
 
     void delete(String uuid) {
-        Resume[] resumes1 = new Resume[storage.length];
-        int j = 0;
-        for (int i = 0; i < size(); i++) {
-            if (!uuid.equals(storage[i].uuid)){
-                resumes1[j] =  storage[i];
-                j++;
+        boolean isSorted = false;
+
+        for (int i = 0; i < storage.length; i++) {
+            if (isSorted == true) {
+                storage[i - 1] = storage[i];
+            }
+            if (storage[i] == null) {
+                break;
+            }
+            if (uuid.equals(storage[i].uuid)) {
+                storage[i] = null;
+                isSorted = true;
             }
         }
     }
@@ -49,9 +56,9 @@ public class ArrayStorage {
      */
     Resume[] getAll() {
         Resume[] resumes = new Resume[size()];
-        for (int i = 0; i < resumes.length ; i++) {
-            if (storage[i] != null){
-                resumes[i]= storage[i];
+        for (int i = 0; i < resumes.length; i++) {
+            if (storage[i] != null) {
+                resumes[i] = storage[i];
             }
         }
         return resumes;
@@ -60,11 +67,11 @@ public class ArrayStorage {
     int size() {
         int size = 0;
 
-        for (int i = 0; i < storage.length ; i++) {
-            if (storage[i] == null){
+        for (int i = 0; i < storage.length; i++) {
+            if (storage[i] == null) {
                 break;
             }
-            if (storage[i] != null){
+            if (storage[i] != null) {
                 size++;
             }
         }
