@@ -2,11 +2,13 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
+import java.util.Arrays;
+
 /**
  * Test for your com.urise.webapp.storage.ArrayStorage implementation
  */
 public class MainTestArrayStorage {
-    private final static ArrayStorage ARRAY_STORAGE = new ArrayStorage();
+    private static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
 
     public static void main(String[] args) {
         final Resume r1 = new Resume();
@@ -16,7 +18,7 @@ public class MainTestArrayStorage {
         final Resume r3 = new Resume();
         r3.setUuid("uuid3");
 
-        System.out.println(r1 == r2);
+        // System.out.println(r1 == r2);
 
         ARRAY_STORAGE.save(r1);
         ARRAY_STORAGE.save(r2);
@@ -26,6 +28,7 @@ public class MainTestArrayStorage {
         System.out.println("Size: " + ARRAY_STORAGE.size());
 
         System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
+        //    System.out.println("index of r3 " + Arrays.binarySearch(ArrayStorage.storage, 0, Ar, searchKey););
 
         printAll();
         ARRAY_STORAGE.delete(r1.getUuid());
