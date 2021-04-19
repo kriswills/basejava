@@ -2,8 +2,6 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
-import java.util.Arrays;
-
 /**
  * Test for your com.urise.webapp.storage.ArrayStorage implementation
  */
