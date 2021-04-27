@@ -4,32 +4,15 @@ import com.urise.webapp.model.Resume;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-public class MapStorage extends AbstractStorage {
-    private Map<Resume, String> map = new HashMap<>();
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MapStorage that = (MapStorage) o;
-
-        return Objects.equals(map, that.map);
-    }
-
-    @Override
-    public int hashCode() {
-        return map != null ? map.hashCode() : 0;
-    }
+public class MapUuidStorage extends AbstractStorage {
+    private Map<String, Resume> map = new HashMap<>();
 
     @Override
     protected String getSearchKey(String uuid) {
-        for (Map.Entry<Resume, String> entry : map.entrySet()) {
-            if (map.containsKey(uuid)) {
-                String s = String.valueOf(entry.getKey());
-                return s;
+        for (Map.Entry<String, Resume> entry : map.entrySet()) {
+            if (map.get(uuid).getUuid().equals(uuid)) {
+                return entry.getKey();
             }
         }
         return null;
@@ -37,7 +20,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume r, Object searchKey) {
-        map.put(r, (String) searchKey);
+        map.put((String) searchKey, r);
     }
 
     @Override
@@ -47,7 +30,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void doSave(Resume r, Object searchKey) {
-        map.put(r, (String) searchKey);
+        map.put((String) searchKey, r);
     }
 
     @Override
@@ -57,21 +40,21 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected Resume doGet(Object searchKey) {
-        return null;
+        return map.get((String) searchKey);
     }
 
     @Override
     public void clear() {
-
+        map.clear();
     }
 
     @Override
     public Resume[] getAll() {
-        return new Resume[0];
+        return map.values().toArray(new Resume[0]);
     }
 
     @Override
     public int size() {
-        return 0;
+        return map.size();
     }
 }
