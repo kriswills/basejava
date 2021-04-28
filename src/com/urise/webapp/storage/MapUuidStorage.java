@@ -4,14 +4,30 @@ import com.urise.webapp.model.Resume;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MapUuidStorage extends AbstractStorage {
     private Map<String, Resume> map = new HashMap<>();
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MapUuidStorage that = (MapUuidStorage) o;
+
+        return Objects.equals(map, that.map);
+    }
+
+    @Override
+    public int hashCode() {
+        return map != null ? map.hashCode() : 0;
+    }
+
+    @Override
     protected String getSearchKey(String uuid) {
         for (Map.Entry<String, Resume> entry : map.entrySet()) {
-            if (map.get(uuid).getUuid().equals(uuid)) {
+            if (entry.getKey().equals(uuid)) {
                 return entry.getKey();
             }
         }
