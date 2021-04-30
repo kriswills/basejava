@@ -4,16 +4,14 @@ import com.urise.webapp.model.Resume;
 
 import java.util.*;
 
-// TODO implement
-// TODO: create new MapStorage class with  Search key not uuid
-public class MapUuidStorage extends AbstractStorage {
+public class MapResumeStorageTest extends AbstractStorage {
     private Map<String, Resume> map = new HashMap<>();
 
     @Override
-    protected String getSearchKey(String uuid) {
+    protected Object getSearchKey(String fullName) {
         for (Map.Entry<String, Resume> entry : map.entrySet()) {
-            if (map.get(uuid).getUuid().equals(uuid)) {
-                return uuid;
+            if (map.get(fullName).getUuid().equals(fullName)) {
+                return fullName;
             }
         }
         return null;
@@ -52,16 +50,14 @@ public class MapUuidStorage extends AbstractStorage {
     @Override
     public List<Resume> getAllSorted() {
         List<Resume> list = new ArrayList<Resume>(map.values());
-        Collections.sort(list, RESUME_COMPARATOR);
-        return list;
+        Collections.sort(list,RESUME_COMPARATOR);
+        return  list;
     }
 
-/*
-    @Override
+    /*@Override
     public Resume[] getAll() {
         return new Resume[0];
     }*/
-
 
     @Override
     public int size() {
