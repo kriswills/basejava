@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 public class MapUuidStorageTest extends AbstractStorageTest{
 
-    protected MapUuidStorageTest(Storage storage) {
+    public MapUuidStorageTest() {
         super(new MapUuidStorage());
     }
 }
