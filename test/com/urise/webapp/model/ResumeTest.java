@@ -11,7 +11,7 @@ public class ResumeTest {
     public static void main(String[] args) {
 
         Resume resume = new Resume("uuid", "Григорий Кислин");
-        System.out.println(resume);
+      //  System.out.println(resume);
 
         Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
         contacts.put(ContactType.PHONE, "+7(921) 855-0482");
@@ -24,9 +24,9 @@ public class ResumeTest {
 
         resume.setContacts(contacts);
 
-        for (Map.Entry<ContactType, String> c : contacts.entrySet()) {
+       /* for (Map.Entry<ContactType, String> c : contacts.entrySet()) {
             System.out.println(c);
-        }
+        }*/
 
         Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
         Section objective = new TextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям");
@@ -69,7 +69,19 @@ public class ResumeTest {
 
         resume.setSections(sections);
 
-        for (Map.Entry<SectionType, Section> c : sections.entrySet()) {
+        /*for (Map.Entry<SectionType, Section> c : sections.entrySet()) {
+            System.out.println(c);
+        }*/
+        System.out.println(resume.getUuid());
+        System.out.println(resume.getFullName());
+
+        System.out.println("Contacts");
+        for (Map.Entry<ContactType, String> c : resume.getContacts().entrySet()) {
+            System.out.println(c);
+        }
+
+        System.out.println("Sections");
+        for (Map.Entry<SectionType, Section> c : resume.getSections().entrySet()) {
             System.out.println(c);
         }
     }
