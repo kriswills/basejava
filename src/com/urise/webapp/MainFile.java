@@ -15,7 +15,7 @@ public class MainFile {
             throw new RuntimeException("Error", e);
         }
 
-        File dir = new File("./src/ru/javawebinar/basejava");
+        File dir = new File("C:\\projects\\basejava\\basejava\\src");
         System.out.println(dir.isDirectory());
         String[] list = dir.list();
         if (list != null) {
@@ -28,6 +28,23 @@ public class MainFile {
             System.out.println(fis.read());
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+        printDirectoryDeeply(dir);
+    }
+
+    // TODO: make pretty output
+    public static void printDirectoryDeeply(File dir) {
+        File[] files = dir.listFiles();
+
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    System.out.println("File: " + file.getName());
+                } else if (file.isDirectory()) {
+                    System.out.println("Directory: " + file.getName());
+                    printDirectoryDeeply(file);
+                }
+            }
         }
     }
 }
