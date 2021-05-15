@@ -1,17 +1,26 @@
-package com.urise.webapp.model;
+package com.urise.webapp.storage;
+
+import com.urise.webapp.model.*;
 
 import java.time.Month;
-import java.util.Map;
 
-import static org.junit.Assert.*;
+public class ResumeTestData {
 
-public class ResumeTest {
-    public static void main(String[] args) {
+    public static final String UUID_1 = "uuid1";
+    public static final String UUID_2 = "uuid2";
+    public static final String UUID_3 = "uuid3";
+    public static final String UUID_4 = "uuid4";
 
-        Resume R1 = new Resume("UUID_1", "Name1");
-        Resume R2 = new Resume("UUID_2", "Name2");
-        Resume R3 = new Resume("UUID_3", "Name3");
-        Resume R4 = new Resume("UUID_4", "Name4");
+    public static final Resume R1;
+    public static final Resume R2;
+    public static final Resume R3;
+    public static final Resume R4;
+
+    static {
+        R1 = new Resume(UUID_1, "Name1");
+        R2 = new Resume(UUID_2, "Name2");
+        R3 = new Resume(UUID_3, "Name3");
+        R4 = new Resume(UUID_4, "Name4");
 
         R1.addContact(ContactType.MAIL, "mail1@ya.ru");
         R1.addContact(ContactType.PHONE, "11111");
@@ -36,5 +45,6 @@ public class ResumeTest {
                 new OrganizationSection(
                         new Organization("Organization2", "http://Organization2.ru",
                                 new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));
+
     }
 }
