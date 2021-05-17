@@ -15,7 +15,7 @@ public class Organization implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private final Link homePage;
-    private List<Position> positions = new ArrayList<>();
+    private List<Position> positions;
 
     public Organization(String name, String url, Position... positions) {
         this(new Link(name, url), Arrays.asList(positions));
