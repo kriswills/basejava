@@ -1,9 +1,7 @@
 package com.urise.webapp.storage.serializer;
 
-import com.urise.webapp.model.ContactType;
-import com.urise.webapp.model.Resume;
-import com.urise.webapp.model.Section;
-import com.urise.webapp.model.SectionType;
+import com.sun.corba.se.impl.orbutil.ObjectWriter;
+import com.urise.webapp.model.*;
 
 import java.io.*;
 import java.util.Map;
@@ -17,18 +15,19 @@ public class DataStreamSerializer implements StreamSerializer {
             dos.writeUTF(r.getFullName());
             Map<ContactType, String> contacts = r.getContacts();
             dos.writeInt(contacts.size());
+
             for (Map.Entry<ContactType, String> entry : contacts.entrySet()) {
                 dos.writeUTF(entry.getKey().name());
                 dos.writeUTF(entry.getValue());
             }
 
-//            Map<SectionType, Section> sections = r.getSections();
-//            dos.writeInt(sections.size());
-//            for (Map.Entry<SectionType, Section> entry : sections.entrySet()) {
-//                dos.writeUTF(entry.getKey().name());
-//                dos.writeUTF(String.valueOf(entry.getValue()));
-//            }
             // TODO implements sections
+            Map<SectionType, Section> sections = r.getSections();
+            dos.writeInt(sections.size());
+            for (Map.Entry<SectionType, Section> entry : sections.entrySet()) {
+                dos.writeUTF(entry.getKey().name());
+                dos.writeUTF(String.valueOf(entry.getValue()));
+            }
         }
     }
 
@@ -44,6 +43,8 @@ public class DataStreamSerializer implements StreamSerializer {
             }
 
             // TODO implements sections
+
+
             return resume;
         }
     }
