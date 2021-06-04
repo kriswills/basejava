@@ -4,10 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class JavaStreams {
     public static void main(String[] args) {
-        int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] values = {1, 1, 2, 2, 5, 6, 7, 8, 9};
         System.out.println(minValue(values));
 
         List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -15,6 +16,12 @@ public class JavaStreams {
     }
 
     public static int minValue(int[] values) {
+//
+//        int result = Stream.of(values)
+//                .distinct()
+//                .reduce(0, (a,b) -> 9 * a + b);
+
+
         int theMin = IntStream.of(values).min().getAsInt();
         return theMin;
     }
