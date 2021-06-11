@@ -23,8 +23,12 @@ public class ResumeTestData {
         R3 = new Resume(UUID_3, "Name3");
         R4 = new Resume(UUID_4, "Name4");
 
-//        R1.addContact(ContactType.MAIL, "mail1@ya.ru");
-//        R1.addContact(ContactType.PHONE, "11111");
+        R1.addContact(ContactType.MAIL, "mail1@ya.ru");
+        R1.addContact(ContactType.PHONE, "11111");
+
+        R4.addContact(ContactType.PHONE, "565464");
+        R4.addContact(ContactType.SKYPE, "skype");
+
 //        R1.addSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
 //        R1.addSection(SectionType.PERSONAL, new TextSection("Personal data"));
 //        R1.addSection(SectionType.ACHIEVEMENT, new ListSection("Achivment11", "Achivment12", "Achivment13"));
@@ -46,6 +50,6 @@ public class ResumeTestData {
 //                new OrganizationSection(
 //                        new Organization("Organization2", "http://Organization2.ru",
 //                                new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));
-
-    }
+//
+ }
 }
