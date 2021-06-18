@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static com.urise.webapp.storage.ResumeTestData.*;
+import static com.urise.webapp.ResumeTestData.*;
 import static org.junit.Assert.*;
 
 public abstract class AbstractStorageTest {
